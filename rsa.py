@@ -14,7 +14,7 @@ def rsa_generate_key():
     p = rsa_algorithms.generate_random_prime()
     q = rsa_algorithms.generate_random_prime()
 
-    print(f"p={p}, q={q}")
+    #print(f"p={p}, q={q}")
 
     #p = p1
     #q = q1
@@ -22,11 +22,11 @@ def rsa_generate_key():
     # Compute the product of p and q
     n = p * q
 
-    print(f"n = {n}")
+    #print(f"n = {n}")
 
     # Choose e such that gcd(e, phi_n) == 1.
     phi_n = (p - 1) * (q - 1)
-    print(f"phi_n = {phi_n}")
+    #print(f"phi_n = {phi_n}")
 
     
     # find e
@@ -42,12 +42,12 @@ def rsa_generate_key():
     
 
     # Print encryption value
-    print(f"e = {e}")
+    #print(f"e = {e}")
 
     # Choose d such that e * d % phi_n = 1.
     # Notice that we're using our modular_inverse from our work in the last chapter!
     d = rsa_algorithms.multiplcative_inverse(e, phi_n)
-    print(f"d = {d}")
+    #print(f"d = {d}")
 
     keys = [e, d, n] 
 

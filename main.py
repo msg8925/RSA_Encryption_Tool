@@ -40,10 +40,18 @@ if __name__=="__main__":
             public_key = [keys[0], keys[2]]
             private_key = [keys[1], keys[2]]
 
+            print(f"""
             
+                [Instructions: Publish the public key so others can send you encrypted messages.
+                               Kept the private key secret and place it in a secure location. 
+                               You will need the private key when decrypting messages sent to you.]
+
+                               Public key = {public_key}    
+                               Private key = {private_key} 
+            """)
                 
-            print(f"Public key = {public_key}")
-            print(f"Private key = {private_key}")
+            #print(f"Public key = {public_key}")
+            #print(f"Private key = {private_key}")
 
             e = public_key[0]
             n = public_key[1]

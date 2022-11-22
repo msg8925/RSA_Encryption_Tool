@@ -32,13 +32,15 @@ if __name__=="__main__":
 
     print(f"Encrypted message: {c}")
 
+
+
     # decrypt data
+ 
+    d = private_key[0]
     
-
-    # d = private_key[0]
-    
-    # for original_char in original_msg:
-    #     original_msg.append(rsa.rsa_decrypt(c, d, n))
+    for original_char in c:
+        original_msg.append(chr(rsa.rsa_decrypt(original_char, d, n)))
 
 
-    # print(f"original message = {original_msg}")    
+    original_text = "".join(original_msg)    
+    print(f"original message = {original_text}")    

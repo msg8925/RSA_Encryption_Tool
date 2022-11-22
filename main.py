@@ -6,6 +6,7 @@ if __name__=="__main__":
     c = []
     string_encrypted_message = []
     char_spacing_message = []
+    ampersand_embedded_message = []
 
 
     print("""
@@ -61,22 +62,18 @@ if __name__=="__main__":
         print(f"string_encrypted_message = {string_encrypted_message}") 
 
         # Insert symbol '&' to allow dectection of word boundaries    
-        index = 0
+        
         for msg_item in string_encrypted_message:
-            if index == (2*index -1):
-                char_spacing_message.append('&')
-            else:
-                char_spacing_message.append(msg_item)
-                 
+            ampersand_embedded_message.append(msg_item + '&')
+   
 
-            index = index + 1          
-
+        print(f"ampersand embedded message = {ampersand_embedded_message}")
 
         #  # Join the string version
-        char_spacing_message = "".join(char_spacing_message)
+        ampersand_embedded_message = "".join(ampersand_embedded_message)
         # joined_encrypted_message = "".join(string_encrypted_message)
 
-        print(f"Encrypted message: {char_spacing_message}")
+        print(f"Encrypted message: {ampersand_embedded_message}")
     
 
     elif user_input == '3':
@@ -86,12 +83,18 @@ if __name__=="__main__":
 
         c = input("Please enter the message you want to decrypt: ")
 
-        #c =  
+        # Separate the message into a list 
+        c = c.split('&')
+
+        # Remove the final empty index     
+        c.pop()
+
+        print(f"c.split('&') = {c}")  
 
         # d = private_key[0]
     
         for original_char in c:
-            original_msg.append(chr(rsa.rsa_decrypt(original_char, d, n)))
+            original_msg.append(chr(rsa.rsa_decrypt(int(original_char), d, n)))
 
 
         original_text = "".join(original_msg)    

@@ -70,13 +70,13 @@ def multiplcative_inverse(A, B):
     while 1:
         
         # Show iterations of EEA algorithm
-        print(f"Q: {Q}, a: {a}, b: {b}, r: {r}, T1: {T1}, T2: {T2}, T: {T}", Q, a, b, r, T1, T2, T)    
+        #print(f"Q: {Q}, a: {a}, b: {b}, r: {r}, T1: {T1}, T2: {T2}, T: {T}", Q, a, b, r, T1, T2, T)    
 
         if b == 0:
             if T1 < 0:
                 T1 = T1 + T2
             
-            print(f"T1={T1}")
+            #print(f"T1={T1}")
             return T1
         
 

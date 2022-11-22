@@ -14,7 +14,7 @@ if __name__=="__main__":
     print(f"Private key = {private_key}")
 
     # encrypt data
-    msg = 100
+    msg = 65
     e = public_key[0]
     n = public_key[1]
     c = rsa.rsa_encrypt(msg, e, n)

@@ -14,7 +14,11 @@ if __name__=="__main__":
     print(f"Private key = {private_key}")
 
     # encrypt data
-    msg = 65
+
+    # Convert char to ascii value
+    user_char = input("Please enter a char: ")
+    msg = ord(user_char)
+    print(f"msg = {msg}")
     e = public_key[0]
     n = public_key[1]
     c = rsa.rsa_encrypt(msg, e, n)

@@ -9,100 +9,108 @@ if __name__=="__main__":
     ampersand_embedded_message = []
 
 
-    print("""
-    
-        1. Generate keys
-        2. Encrypt message
-        3. Decrypt message
-    
-    """)
+    while True:
 
-    user_input = input(">>: ")
-
-
-    if user_input == '1':
+        print("""
         
-        keys = rsa.rsa_generate_key(61, 53)
-
-        #print(f"Keys={keys}")
-
-        public_key = [keys[0], keys[2]]
-        private_key = [keys[1], keys[2]]
-
-        print(f"Public key = {public_key}")
-        print(f"Private key = {private_key}")
-
-        e = public_key[0]
-        n = public_key[1]
-
+            1. Generate keys
+            2. Encrypt message
+            3. Decrypt message
+            4. Exit
         
-    elif user_input == '2':
+        """)
 
-        e = int(input("Please enter the e public key: "))
-        n = int(input("Please enter the n public key: "))
-        
-        # Convert char to ascii value
-        #user_char = input("Please enter a char: ")
-        user_string = input("Please enter the string you want to encrypt: ")
-        user_string.split() 
-        print(f"user_string = {user_string}")
+        user_input = input(">>: ")
 
-        for msg in user_string: 
-            msg = ord(msg)
-            print(f"msg = {msg}")
+
+        if user_input == '1':
             
-            c.append(rsa.rsa_encrypt(msg, e, n))
+            keys = rsa.rsa_generate_key(61, 53)
+
+            #print(f"Keys={keys}")
+
+            public_key = [keys[0], keys[2]]
+            private_key = [keys[1], keys[2]]
+
+            print(f"Public key = {public_key}")
+            print(f"Private key = {private_key}")
+
+            e = public_key[0]
+            n = public_key[1]
+
+            
+        elif user_input == '2':
+
+            e = int(input("Please enter the e public key: "))
+            n = int(input("Please enter the n public key: "))
+            
+            # Convert char to ascii value
+            #user_char = input("Please enter a char: ")
+            user_string = input("Please enter the string you want to encrypt: ")
+            user_string.split() 
+            print(f"user_string = {user_string}")
+
+            for msg in user_string: 
+                msg = ord(msg)
+                print(f"msg = {msg}")
+                
+                c.append(rsa.rsa_encrypt(msg, e, n))
 
 
-        index = 0
-        for msg_element in c:
-            string_encrypted_message.append(str(c[index])) 
-            index = index + 1
+            index = 0
+            for msg_element in c:
+                string_encrypted_message.append(str(c[index])) 
+                index = index + 1
 
-        print(f"string_encrypted_message = {string_encrypted_message}") 
+            print(f"string_encrypted_message = {string_encrypted_message}") 
 
-        # Insert symbol '&' to allow dectection of word boundaries    
+            # Insert symbol '&' to allow dectection of word boundaries    
+            
+            for msg_item in string_encrypted_message:
+                ampersand_embedded_message.append(msg_item + '&')
+    
+
+            print(f"ampersand embedded message = {ampersand_embedded_message}")
+
+            #  # Join the string version
+            ampersand_embedded_message = "".join(ampersand_embedded_message)
+            # joined_encrypted_message = "".join(string_encrypted_message)
+
+            print(f"Encrypted message: {ampersand_embedded_message}")
         
-        for msg_item in string_encrypted_message:
-            ampersand_embedded_message.append(msg_item + '&')
-   
 
-        print(f"ampersand embedded message = {ampersand_embedded_message}")
+        elif user_input == '3':
 
-        #  # Join the string version
-        ampersand_embedded_message = "".join(ampersand_embedded_message)
-        # joined_encrypted_message = "".join(string_encrypted_message)
+            d = int(input("Please enter the e private key: "))
+            n = int(input("Please enter the n private key: "))
 
-        print(f"Encrypted message: {ampersand_embedded_message}")
-    
+            c = input("Please enter the message you want to decrypt: ")
 
-    elif user_input == '3':
+            # Separate the message into a list 
+            c = c.split('&')
 
-        d = int(input("Please enter the e private key: "))
-        n = int(input("Please enter the n private key: "))
+            # Remove the final empty index     
+            c.pop()
 
-        c = input("Please enter the message you want to decrypt: ")
+            print(f"c.split('&') = {c}")  
 
-        # Separate the message into a list 
-        c = c.split('&')
-
-        # Remove the final empty index     
-        c.pop()
-
-        print(f"c.split('&') = {c}")  
-
-        # d = private_key[0]
-    
-        for original_char in c:
-            original_msg.append(chr(rsa.rsa_decrypt(int(original_char), d, n)))
+            # d = private_key[0]
+        
+            for original_char in c:
+                original_msg.append(chr(rsa.rsa_decrypt(int(original_char), d, n)))
 
 
-        original_text = "".join(original_msg)    
-        print(f"original message = {original_text}")   
+            original_text = "".join(original_msg)    
+            print(f"original message = {original_text}")   
 
 
-    else:
-        print("Error: Invalid menu item selected.")
+        elif user_input == '4':
+            print("Exiting Program...")
+            exit() 
+
+
+        else:
+            print("Error: Invalid menu item selected.")
 
     
 

@@ -5,6 +5,7 @@ if __name__=="__main__":
     original_msg = []
     c = []
     string_encrypted_message = []
+    char_spacing_message = []
 
 
     print("""
@@ -57,18 +58,37 @@ if __name__=="__main__":
             string_encrypted_message.append(str(c[index])) 
             index = index + 1
 
-        print(f"string_encrypted_message = {string_encrypted_message}")    
+        print(f"string_encrypted_message = {string_encrypted_message}") 
+
+        # Insert symbol '&' to allow dectection of word boundaries    
+        index = 0
+        for msg_item in string_encrypted_message:
+            if index == (2*index -1):
+                char_spacing_message.append('&')
+            else:
+                char_spacing_message.append(msg_item)
+                 
+
+            index = index + 1          
 
 
-         # Join the string version
-        joined_encrypted_message = "".join(string_encrypted_message)
+        #  # Join the string version
+        char_spacing_message = "".join(char_spacing_message)
+        # joined_encrypted_message = "".join(string_encrypted_message)
 
-        print(f"Encrypted message: {joined_encrypted_message}")
+        print(f"Encrypted message: {char_spacing_message}")
     
 
     elif user_input == '3':
 
-        d = private_key[0]
+        d = int(input("Please enter the e private key: "))
+        n = int(input("Please enter the n private key: "))
+
+        c = input("Please enter the message you want to decrypt: ")
+
+        #c =  
+
+        # d = private_key[0]
     
         for original_char in c:
             original_msg.append(chr(rsa.rsa_decrypt(original_char, d, n)))

@@ -1,4 +1,4 @@
-import extended_euclids_algorithm
+import rsa_algorithms
 
 ###################################################
 #  
@@ -26,7 +26,7 @@ def rsa_generate_key(p, q):
     while e < phi_n:
         # e must be co-prime to phi and
         # smaller than phi.
-        if extended_euclids_algorithm.gcd(e, phi_n) == 1:
+        if rsa_algorithms.gcd(e, phi_n) == 1:
             break
         else:
             e = e + 1
@@ -37,7 +37,7 @@ def rsa_generate_key(p, q):
 
     # Choose d such that e * d % phi_n = 1.
     # Notice that we're using our modular_inverse from our work in the last chapter!
-    d = extended_euclids_algorithm.multiplcative_inverse(e, phi_n)
+    d = rsa_algorithms.multiplcative_inverse(e, phi_n)
     print(f"d = {d}")
 
     keys = [e, d, n] 

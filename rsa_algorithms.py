@@ -1,5 +1,13 @@
 import math
 
+###################################################
+#  
+#   Desc: Find the greatest common divisor 
+#         (Highest common factor) using Euclid's 
+#         algorithm
+#
+###################################################
+
 # Returns greatest common divisor (a.k.a Highest common factor) of a and b
 def gcd(A, B):
 
@@ -32,6 +40,12 @@ def gcd(A, B):
         b = r   
 
 
+###################################################
+#  
+#   Desc: Finds the multiplicative inverse using the
+#         extended Euclid's algorithm    
+#
+###################################################
 def multiplcative_inverse(A, B):
 
     a=0

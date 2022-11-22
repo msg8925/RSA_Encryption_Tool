@@ -5,19 +5,28 @@ import rsa_algorithms
 #   Desc: Generate both the public and private keys
 #
 ###################################################
-def rsa_generate_key(p, q):
+def rsa_generate_key():
     
     # Print prime values
     #print(f"p = {p}")
     #print(f"q = {q}")
 
+    p = rsa_algorithms.generate_random_prime()
+    q = rsa_algorithms.generate_random_prime()
+
+    print(f"p={p}, q={q}")
+
+    #p = p1
+    #q = q1
+
     # Compute the product of p and q
     n = p * q
-    #print(f"n = {n}")
+
+    print(f"n = {n}")
 
     # Choose e such that gcd(e, phi_n) == 1.
     phi_n = (p - 1) * (q - 1)
-    #print(f"phi_n = {phi_n}")
+    print(f"phi_n = {phi_n}")
 
     
     # find e
@@ -33,12 +42,12 @@ def rsa_generate_key(p, q):
     
 
     # Print encryption value
-    #print(f"e = {e}")
+    print(f"e = {e}")
 
     # Choose d such that e * d % phi_n = 1.
     # Notice that we're using our modular_inverse from our work in the last chapter!
     d = rsa_algorithms.multiplcative_inverse(e, phi_n)
-    #print(f"d = {d}")
+    print(f"d = {d}")
 
     keys = [e, d, n] 
 
@@ -56,14 +65,14 @@ def rsa_generate_key(p, q):
 # Encryption c = (msg ^ e) % n
 def rsa_encrypt(msg, e, n):
 
-    print(f"Message data = {msg}")
+    #print(f"Message data = {msg}")
  
     # Encryption c = (msg ^ e) % n
     c = pow(msg, e) 
-    print(f"c = pow({msg}, {e}) = {c}")
+    #print(f"c = pow({msg}, {e}) = {c}")
     
     c = c % n
-    print(f"Encrypted data = {c}")
+    #print(f"Encrypted data = {c}")
  
     return c
 
@@ -81,6 +90,6 @@ def rsa_decrypt(c, d, n):
     #print(f"m = pow({c}, {d}) = {m}")
     
     m = m % n
-    print(f"Original Message Sent = {m}")    
+    #print(f"Original Message Sent = {m}")    
 
     return m

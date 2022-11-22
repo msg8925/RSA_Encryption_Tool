@@ -1,4 +1,6 @@
 import math
+import random
+from Crypto.Util import number
 
 ###################################################
 #  
@@ -96,5 +98,20 @@ def multiplcative_inverse(A, B):
         T1 = T2
         T2 = T  
 
-    
- 
+
+###################################################
+#  
+#   Desc: Generates a random prime number between     
+#         two given limits
+#
+###################################################    
+def generate_random_prime():
+
+    return number.getPrime(8)
+
+    # while True:
+    #     random_prime_number = random.randrange(101, 173)
+    #     if (random_prime_number % 2) == 0:
+    #         continue
+    #     else:
+    #         return random_prime_number

@@ -35,10 +35,13 @@ if __name__=="__main__":
 
         
     elif user_input == '2':
+
+        e = int(input("Please enter the e public key: "))
+        n = int(input("Please enter the n public key: "))
         
         # Convert char to ascii value
         #user_char = input("Please enter a char: ")
-        user_string = input("Please enter a string: ")
+        user_string = input("Please enter the string you want to encrypt: ")
         user_string.split() 
         print(f"user_string = {user_string}")
 
@@ -48,7 +51,19 @@ if __name__=="__main__":
             
             c.append(rsa.rsa_encrypt(msg, e, n))
 
-        print(f"Encrypted message: {c}")
+
+        index = 0
+        for msg_element in c:
+            string_encrypted_message.append(str(c[index])) 
+            index = index + 1
+
+        print(f"string_encrypted_message = {string_encrypted_message}")    
+
+
+         # Join the string version
+        joined_encrypted_message = "".join(string_encrypted_message)
+
+        print(f"Encrypted message: {joined_encrypted_message}")
     
 
     elif user_input == '3':

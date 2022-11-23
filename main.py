@@ -1,5 +1,7 @@
 import rsa
 import os
+import db
+from user import User
 
 if __name__=="__main__":
 
@@ -9,7 +11,11 @@ if __name__=="__main__":
     char_spacing_message = []
     ampersand_embedded_message = []
     NUMBER_OF_BITS = 8
+    DB_NAME = "user.db"
 
+    # Setup DB
+    db.create_db_connection(DB_NAME)
+    db.create_user_table(DB_NAME)
 
     while True:
 
@@ -30,10 +36,17 @@ if __name__=="__main__":
 
         user_input = input(">>: ")
 
-
         if user_input == '1':
             
             os.system('cls')
+
+            username = input("Please enter your username: ")
+            password = input("Please enter your password: ")
+            email = input("Please enter your email: ") 
+
+            user = User(username=username, password=password, email=email)
+
+            db.insert_user_into_db(user, DB_NAME)
 
             # Generate the public and private keys
             keys = rsa.rsa_generate_key(NUMBER_OF_BITS)

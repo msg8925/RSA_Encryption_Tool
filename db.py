@@ -21,13 +21,30 @@ def get_db_cursor(DB_CONN):
     return c 
 
 
+def create_user_table(DB_NAME):
+
+    conn = create_db_connection(DB_NAME) 
+    c = get_db_cursor(conn)
+
+    c.execute("""
+
+        CREATE TABLE users (
+            firstname text,
+            lastname text,
+            email text
+        )
+
+    """)
+
+    return 0 
+
 
 def insert_user_into_db(user, DB_NAME):
 
     conn = create_db_connection(DB_NAME) 
     c = get_db_cursor(conn)
 
-    c.execute("INSERT INTO users VALUES (:firstname, :lastname, :email)", {'firstname':user.firstname, 'lastname':user.lastname, 'email':user.email})
+    c.execute("INSERT INTO users VALUES (:username, :password, :email)", {'username':user.username, 'password':user.password, 'email':user.email})
 
     conn.commit()
 
@@ -36,12 +53,12 @@ def insert_user_into_db(user, DB_NAME):
     return 0
 
 
-def select_user_from_db(lastname, DB_NAME):
+def select_user_from_db(username, DB_NAME):
 
     conn = create_db_connection(DB_NAME) 
     c = get_db_cursor(conn)
 
-    c.execute("SELECT * FROM users WHERE lastname=:lastname", {'lastname': lastname})
+    c.execute("SELECT * FROM users WHERE username=:username", {'username': username})
 
     users = c.fetchall()
 

@@ -1,12 +1,12 @@
 class User:
 
-    def __init__(self, firstname, lastname, email):
-        self.firstname = firstname
-        self.lastname = lastname
+    def __init__(self, username, password, email):
+        self.username = username
+        self.password = password
         self.email = email 
 
 
     def __repr__(self):
-        return f"User({self.firstname}, {self.lastname}, {self.email})"    
+        return f"User({self.username}, {self.password}, {self.email})"    
 
 

@@ -100,17 +100,13 @@ def multiplcative_inverse(A, B):
 
 ###################################################
 #  
-#   Desc: Generates a random prime number between     
-#         two given limits
+#   Desc: Generates a random prime with a bit size  
+#         given by the argument 'NUMBER_OF_BITS'
 #
 ###################################################    
-def generate_random_prime():
+def generate_random_prime(NUMBER_OF_BITS):
 
-    return number.getPrime(8)
+    # Use the 'Crypto' library to generate a random prime number
+    return number.getPrime(NUMBER_OF_BITS)
 
-    # while True:
-    #     random_prime_number = random.randrange(101, 173)
-    #     if (random_prime_number % 2) == 0:
-    #         continue
-    #     else:
-    #         return random_prime_number
+  

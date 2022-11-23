@@ -5,19 +5,15 @@ import rsa_algorithms
 #   Desc: Generate both the public and private keys
 #
 ###################################################
-def rsa_generate_key():
+def rsa_generate_key(NUMBER_OF_BITS):
     
+    # Generate random prime numbers
+    p = rsa_algorithms.generate_random_prime(NUMBER_OF_BITS)
+    q = rsa_algorithms.generate_random_prime(NUMBER_OF_BITS)
+
     # Print prime values
     #print(f"p = {p}")
     #print(f"q = {q}")
-
-    p = rsa_algorithms.generate_random_prime()
-    q = rsa_algorithms.generate_random_prime()
-
-    #print(f"p={p}, q={q}")
-
-    #p = p1
-    #q = q1
 
     # Compute the product of p and q
     n = p * q

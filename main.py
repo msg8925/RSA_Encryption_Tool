@@ -8,6 +8,7 @@ if __name__=="__main__":
     string_encrypted_message = []
     char_spacing_message = []
     ampersand_embedded_message = []
+    NUMBER_OF_BITS = 8
 
 
     while True:
@@ -19,9 +20,11 @@ if __name__=="__main__":
         print("""
         
             1. Generate keys
-            2. Encrypt message
+            2. Encrypt message 
             3. Decrypt message
-            4. Exit
+            4. Encrypt file
+            5. Decrypt file
+            7. Exit
         
         """)
 
@@ -32,8 +35,8 @@ if __name__=="__main__":
             
             os.system('cls')
 
-            #keys = rsa.rsa_generate_key(61, 53)
-            keys = rsa.rsa_generate_key()
+            # Generate the public and private keys
+            keys = rsa.rsa_generate_key(NUMBER_OF_BITS)
 
             #print(f"Keys={keys}")
 
@@ -43,8 +46,9 @@ if __name__=="__main__":
             print(f"""
             
                 [Instructions: Publish the public key so others can send you encrypted messages.
-                               Kept the private key secret and place it in a secure location. 
-                               You will need the private key when decrypting messages sent to you.]
+                               Keep the private key secret and store it in a secure location. 
+                               You will need the private key when decrypting messages that
+                               have been sent to you.]
 
                                Public key = {public_key}    
                                Private key = {private_key} 
@@ -138,7 +142,7 @@ if __name__=="__main__":
             input("Press any key to continue...")
 
 
-        elif user_input == '4':
+        elif user_input == '7':
             print("Exiting Program...")
             exit() 
 

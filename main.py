@@ -2,6 +2,8 @@ import rsa
 import os
 import db
 from user import User
+from file_context_managers import Open_file
+from db_funcs import open_db 
 
 if __name__=="__main__":
 
@@ -14,8 +16,9 @@ if __name__=="__main__":
     DB_NAME = "user.db"
 
     # Setup DB
-    db.create_db_connection(DB_NAME)
-    db.create_user_table(DB_NAME)
+    open_db(DB_NAME)
+    #db.create_db_connection(DB_NAME)
+    #db.create_user_table(DB_NAME)
 
     while True:
 
@@ -40,13 +43,13 @@ if __name__=="__main__":
             
             os.system('cls')
 
-            username = input("Please enter your username: ")
-            password = input("Please enter your password: ")
-            email = input("Please enter your email: ") 
+            # username = input("Please enter your username: ")
+            # password = input("Please enter your password: ")
+            # email = input("Please enter your email: ") 
 
-            user = User(username=username, password=password, email=email)
+            # user = User(username=username, password=password, email=email)
 
-            db.insert_user_into_db(user, DB_NAME)
+            # db.insert_user_into_db(user, DB_NAME)
 
             # Generate the public and private keys
             keys = rsa.rsa_generate_key(NUMBER_OF_BITS)
@@ -73,6 +76,14 @@ if __name__=="__main__":
             e = public_key[0]
             n = public_key[1]
 
+            # Export keys to files
+            with Open_file("Public_key.txt", 'w') as f:
+                f.write(str(public_key))
+
+            with Open_file("Private_key.txt", 'w') as f:
+                f.write(str(private_key))
+
+
             print("\n")
             input("Press any key to continue...")
 
@@ -84,6 +95,10 @@ if __name__=="__main__":
             e = int(input("Please enter the e public key: "))
             n = int(input("Please enter the n public key: "))
             
+
+            
+
+
             # Convert char to ascii value
             #user_char = input("Please enter a char: ")
             user_string = input("Please enter the string you want to encrypt: ")

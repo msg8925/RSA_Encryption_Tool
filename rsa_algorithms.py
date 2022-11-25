@@ -84,7 +84,7 @@ def multiplcative_inverse(A, B):
         # r = a mod b
         # a % b;
         r = a % b
-        Q = math.floor(a / b)
+        Q = a // b
 
         # T = T1 - (T2 * Q) 
         T = T1 - (T2 * Q)

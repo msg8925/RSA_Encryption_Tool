@@ -177,21 +177,20 @@ if __name__=="__main__":
         elif user_input == '6':
             public_key_filename = input("Please enter the public key path: ")            
 
-            
-
             # Open file and read the key value            
             foreign_public_key = read_from_file(public_key_filename, 'r')
             print(f"Public key: {foreign_public_key}")
 
             # Store key in DB 
-            foreign_public_key_object = Public_key(public_key_filename, "1")
+            foreign_public_key_object = Public_key(foreign_public_key, "1")
+            print(f"key_value: {foreign_public_key_object.key_value}")
+            print(f"user_id: {foreign_public_key_object.user_id}")
 
             insert_key_into_db(DB_NAME, foreign_public_key_object)
 
-
-
             print("\n")
             input("Press any key to continue...")
+
 
         elif user_input == '7':
             print("Exiting Program...")

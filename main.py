@@ -2,7 +2,7 @@ import rsa
 import os
 from user import User, Public_key
 from file_context_managers import Open_file
-from db_funcs import open_db, insert_into_db
+from db_funcs import open_db, insert_into_db, insert_key_into_db
 from key_funcs import read_from_file
 from dotenv import load_dotenv 
 
@@ -177,10 +177,18 @@ if __name__=="__main__":
         elif user_input == '6':
             public_key_filename = input("Please enter the public key path: ")            
 
-            #foreign_public_key = Public_key(public_key_filename, "1")
             
+
+            # Open file and read the key value            
             foreign_public_key = read_from_file(public_key_filename, 'r')
             print(f"Public key: {foreign_public_key}")
+
+            # Store key in DB 
+            foreign_public_key_object = Public_key(public_key_filename, "1")
+
+            insert_key_into_db(DB_NAME, foreign_public_key_object)
+
+
 
             print("\n")
             input("Press any key to continue...")

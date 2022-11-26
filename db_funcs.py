@@ -48,3 +48,12 @@ def select_from_db(DB_NAME, username):
         user = c.fetchone()
 
     return user
+
+
+# Insert public key into db
+def insert_key_into_db(DB_NAME, key):
+
+    with DB_context_manager(DB_NAME) as c:
+        c.execute("INSERT INTO public_keys (id, KEY_VALUE, USER_ID) VALUES (:id, :key_value, :user_id)", {'id': None, 'key_value': key.key_value, 'user_id': key.user_id}) 
+
+    return 0

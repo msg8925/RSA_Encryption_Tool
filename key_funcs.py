@@ -7,3 +7,5 @@ def read_from_file(filename, mode):
         key = f.read()
         
     return key
+
+

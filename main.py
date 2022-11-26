@@ -1,9 +1,8 @@
 import rsa
 import os
-import db
 from user import User
 from file_context_managers import Open_file
-from db_funcs import open_db 
+from db_funcs import open_db, insert_into_db 
 
 if __name__=="__main__":
 
@@ -17,8 +16,9 @@ if __name__=="__main__":
 
     # Setup DB
     open_db(DB_NAME)
-    #db.create_db_connection(DB_NAME)
-    #db.create_user_table(DB_NAME)
+
+    user = User("Mike", "Jones", "user1", "1234", "mj@mail.com")
+    insert_into_db(DB_NAME, user)
 
     while True:
 

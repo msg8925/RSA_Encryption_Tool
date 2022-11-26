@@ -1,10 +1,12 @@
 import rsa_algorithms
+from decorators import login_required
 
 ###################################################
 #  
 #   Desc: Generate both the public and private keys
 #
 ###################################################
+@login_required
 def rsa_generate_key(NUMBER_OF_BITS):
     
     # Generate random prime numbers

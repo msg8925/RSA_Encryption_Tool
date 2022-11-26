@@ -2,9 +2,12 @@ import rsa
 import os
 from user import User
 from file_context_managers import Open_file
-from db_funcs import open_db, insert_into_db 
+from db_funcs import open_db, insert_into_db
+from dotenv import load_dotenv 
 
 if __name__=="__main__":
+
+    load_dotenv()
 
     original_msg = []
     c = []
@@ -12,13 +15,15 @@ if __name__=="__main__":
     char_spacing_message = []
     ampersand_embedded_message = []
     NUMBER_OF_BITS = 8
-    DB_NAME = "user.db"
+    #DB_NAME = "user.db"
+    DB_NAME = os.getenv("DB_NAME")
+    print(DB_NAME)
 
     # Setup DB
     open_db(DB_NAME)
 
-    user = User("Mike", "Jones", "user1", "1234", "mj@mail.com")
-    insert_into_db(DB_NAME, user)
+    # user = User("Mike", "Jones", "user1", "1234", "mj@mail.com")
+    # insert_into_db(DB_NAME, user)
 
     while True:
 

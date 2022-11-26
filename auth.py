@@ -1,11 +1,14 @@
 from db_funcs import open_db, insert_into_db, select_from_db
 from user import User
 import bcrypt
+import os
 
-DB_NAME="user.db"
+
 
 def login():
-    
+
+    DB_NAME=os.getenv("DB_NAME")
+
     username = input("Please enter your username: ")
     password = input("Please enter your password: ") 
 
@@ -26,6 +29,8 @@ def login():
 
 
 def register():
+
+    DB_NAME=os.getenv("DB_NAME")
 
     firstname = input("Please enter your firstname: ")
     lastname = input("Please enter your lastname: ")

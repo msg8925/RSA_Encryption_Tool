@@ -1,4 +1,7 @@
 from auth import login, register
+import os 
+
+DB_NAME=os.getenv("DB_NAME") 
 
 def login_required(original_function):
     

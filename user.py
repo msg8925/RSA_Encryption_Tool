@@ -12,3 +12,8 @@ class User:
         return f"User({self.username}, {self.password}, {self.email})"    
 
 
+class Public_key:
+
+    def __init__(self, key_value, user_id):
+        self.key_value = key_value
+        self.user_id = user_id

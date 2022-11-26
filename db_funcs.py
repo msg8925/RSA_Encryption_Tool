@@ -16,6 +16,18 @@ def open_db(DB_NAME):
             
         """)
 
+        c.execute("""
+
+            CREATE TABLE IF NOT EXISTS public_keys (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                KEY_VALUE TEXT,
+                user_id INTEGER,
+                FOREIGN KEY (user_id) REFERENCES user (id) 
+            );
+            
+        """)
+
+
     return 0
 
 

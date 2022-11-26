@@ -1,8 +1,9 @@
 import rsa
 import os
-from user import User
+from user import User, Public_key
 from file_context_managers import Open_file
 from db_funcs import open_db, insert_into_db
+from key_funcs import read_from_file
 from dotenv import load_dotenv 
 
 if __name__=="__main__":
@@ -38,6 +39,7 @@ if __name__=="__main__":
             3. Decrypt message
             4. Encrypt file
             5. Decrypt file
+            6. Import public key
             7. Exit
         
         """)
@@ -100,9 +102,6 @@ if __name__=="__main__":
             e = int(input("Please enter the e public key: "))
             n = int(input("Please enter the n public key: "))
             
-
-            
-
 
             # Convert char to ascii value
             #user_char = input("Please enter a char: ")
@@ -174,6 +173,17 @@ if __name__=="__main__":
             print("\n")
             input("Press any key to continue...")
 
+
+        elif user_input == '6':
+            public_key_filename = input("Please enter the public key path: ")            
+
+            #foreign_public_key = Public_key(public_key_filename, "1")
+            
+            foreign_public_key = read_from_file(public_key_filename, 'r')
+            print(f"Public key: {foreign_public_key}")
+
+            print("\n")
+            input("Press any key to continue...")
 
         elif user_input == '7':
             print("Exiting Program...")

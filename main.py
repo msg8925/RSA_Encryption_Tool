@@ -4,11 +4,11 @@ from user import User, Public_key
 from file_context_managers import Open_file
 from db_funcs import open_db, insert_into_db, insert_key_into_db
 from key_funcs import read_from_file
-from dotenv import load_dotenv 
+#from dotenv import load_dotenv 
 
 if __name__=="__main__":
 
-    load_dotenv()
+    #load_dotenv()
 
     original_msg = []
     c = []
@@ -16,9 +16,9 @@ if __name__=="__main__":
     char_spacing_message = []
     ampersand_embedded_message = []
     NUMBER_OF_BITS = 8
-    #DB_NAME = "user.db"
-    DB_NAME = os.getenv("DB_NAME")
-    print(DB_NAME)
+    DB_NAME = "user.db"
+    #DB_NAME = os.getenv("DB_NAME")
+    print(f"DB_NAME: {DB_NAME}")
 
     # Setup DB
     open_db(DB_NAME)
